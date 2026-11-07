@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage[margin=2cm,headheight=14pt,headsep=18pt,footskip=22pt]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{lmodern}
+
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{VerdeUteq}{HTML}{006537}
+\definecolor{VerdeTabla}{HTML}{11753C}
+\definecolor{AzulTitulo}{HTML}{19598A}
+\definecolor{Dorado}{HTML}{D89D0B}
+
+\newcommand{\estudiante}{Jonathan Holguín}
+\newcommand{\asignatura}{Ingeniería de Requerimientos (ISR-401)}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UTEQ \textperiodcentered\ \asignatura}
+\fancyhead[R]{\small FORM-TL-01 \textperiodcentered\ SPA 2026--2027}
+\fancyfoot[L]{\small \estudiante}
+\fancyfoot[R]{\small Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\titleformat{\section}
+  {\large\bfseries}{\thesection.}{0.9em}{\color{VerdeUteq}}
+
+\newcommand{\cabeceraTabla}[1]{\textcolor{white}{\textbf{#1}}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\color{VerdeUteq} Universidad Técnica Estatal de Quevedo\par}
+  \vspace{0.3em}
+  {\small Facultad de Ciencias de la Computación
+    \textcolor{Dorado}{\textbullet} Carrera de Software\par}
+  \vspace{1em}
+  {\large\bfseries\color{AzulTitulo} ACTIVIDAD FORMATIVA\par}
+  \vspace{0.25em}
+  {\large\bfseries FORM-TL-01\par}
+  {\Large\bfseries\color{VerdeUteq} Taller de tipos de requisitos\par}
+\end{center}
+\noindent\textcolor{Dorado}{\rule{\linewidth}{0.8pt}}
+
+\section{Datos generales}
+
+{\renewcommand{\arraystretch}{1.2}
+\rowcolors{2}{white}{gray!12}
+\noindent\begin{tabularx}{\linewidth}{|p{0.26\linewidth}|X|}
+  \hline
+  \rowcolor{VerdeTabla}
+  \cabeceraTabla{Campo} & \cabeceraTabla{Detalle} \\ \hline
+  Estudiante & \estudiante \\ \hline
+  Asignatura & \asignatura \\ \hline
+  Caso & Plataforma de gestión de citas médicas \\ \hline
+\end{tabularx}}
+
+\section{Clasificación de los enunciados}
+
+\section{Cuantificación de los requisitos de calidad}
+
+\section{Comparación con un compañero}
+
+\end{document}
