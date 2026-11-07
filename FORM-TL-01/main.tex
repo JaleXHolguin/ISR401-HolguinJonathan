@@ -228,6 +228,96 @@ de la norma ISO/IEC 25010:2023~\cite{iso25010}.
 
 \section{Cuantificación de los requisitos de calidad}
 
+Los límites de esta tabla son propuestas para el caso de citas médicas. Para
+plantear las pruebas se tomaron en cuenta los 300 usuarios previstos en la
+hora de mayor demanda, los celulares que suelen usar los pacientes y el
+sistema de facturación que ya está en funcionamiento.
+
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{longtable}
+  {|>{\raggedright\arraybackslash}p{0.07\linewidth}
+   |>{\raggedright\arraybackslash}p{0.34\linewidth}
+   |>{\raggedright\arraybackslash}p{0.25\linewidth}
+   |>{\raggedright\arraybackslash}p{0.08\linewidth}
+   |>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-10\tabcolsep-6\arrayrulewidth\relax}|}
+  \hline
+  \rowcolor{VerdeTabla}
+  \cabeceraTabla{Código} & \cabeceraTabla{Requisito cuantificado} &
+  \cabeceraTabla{Métrica} & \cabeceraTabla{Unidad} & \cabeceraTabla{Umbral}
+  \\ \hline
+  \endhead
+
+  E03 & Con 300 usuarios conectados a la vez, la aplicación debe mostrar el
+  resultado correcto de al menos el 95 \% de las consultas de horarios en 2
+  segundos o menos.
+  & Porcentaje de consultas que muestran el resultado correcto en 2 segundos o
+  menos, sobre todas las consultas realizadas.
+  & \% & Al menos 95 \% \\ \hline
+
+  \rowcolor{gray!12}
+  E07 & La plataforma debe impedir que una persona sin permiso consulte los
+  datos de salud de un paciente. Ninguno de los 30 intentos de prueba sin
+  permiso debe mostrar esos datos.
+  & Número de intentos sin permiso que muestran datos de salud.
+  & Intentos & 0 de 30 \\ \hline
+
+  E10 & Al menos 9 de 10 participantes mayores de 60 años deben poder reservar
+  una cita desde un celular y llegar a la pantalla de confirmación en 3
+  minutos o menos, sin ayuda.
+  & Porcentaje de participantes que completan la reserva sin ayuda y dentro
+  del tiempo indicado.
+  & \% & Al menos 90 \% (9 de 10) \\ \hline
+
+  \rowcolor{gray!12}
+  E14 & La plataforma debe permitir consultar horarios y confirmar una reserva
+  durante al menos el 99,9 \% de los minutos de cada mes, las 24 horas del
+  día.
+  & Porcentaje de minutos del mes en los que se completan correctamente las
+  dos operaciones de prueba.
+  & \% & Al menos 99,9 \% \\ \hline
+
+  E18 & Al enviar 100 cobros válidos, el sistema de facturación debe registrar
+  cada uno una sola vez, con el identificador y el importe correctos. La
+  plataforma debe recibir la confirmación de cada cobro en un máximo de 30
+  segundos desde su envío.
+  & Número de cobros que se registran una sola vez, con los datos correctos, y
+  se confirman a tiempo.
+  & Cobros & 100 de 100 \\ \hline
+
+\end{longtable}}
+
+\subsection*{Cómo comprobar los requisitos}
+
+\begin{itemize}
+
+  \item \textbf{E03. Rapidez al consultar horarios.} Medir 1.000 búsquedas con
+  300 usuarios conectados, desde que se pulsa \textbf{Buscar} hasta que
+  aparecen los turnos o el aviso de que no hay horarios libres. Los errores y
+  las consultas sin respuesta cuentan como fallos.
+  \item \textbf{E07. Acceso a datos de salud.} Con datos ficticios, hacer 10
+  intentos sin iniciar sesión, 10 con una cuenta sin permiso y 10 desde la
+  cuenta de otro paciente. Confirmar también que una cuenta autorizada sí
+  puede acceder.
+  \item \textbf{E10. Facilidad para reservar.} Dar la misma tarea a los 10
+  participantes, con la sesión abierta y un celular Android de gama media o
+  baja. Medir desde que buscan un horario hasta que confirman la cita de
+  prueba, sin ayuda.
+  \item \textbf{E14. Disponibilidad del servicio.} Consultar horarios y
+  confirmar una reserva de prueba cada minuto desde fuera de la plataforma.
+  Usar una agenda separada de las citas reales. El minuto cuenta como
+  disponible si ambas acciones terminan correctamente antes de la siguiente
+  prueba. El 99,9 \% permite hasta 43 minutos no disponibles en un mes de 30
+  días, incluido el mantenimiento.
+  \item \textbf{E18. Registro de cobros.} Enviar 100 cobros ficticios por la
+  interfaz de prueba del proveedor. Revisar que cada cobro figure una sola
+  vez, con el identificador y el importe correctos, y que su confirmación
+  llegue en 30 segundos o menos.
+
+\end{itemize}
+
 \section{Comparación con un compañero}
 
 \renewcommand{\refname}{Referencias}
