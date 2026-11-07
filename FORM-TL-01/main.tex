@@ -62,6 +62,58 @@
 
 \section{Clasificación de los enunciados}
 
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\noindent\begin{tabularx}{\linewidth}
+  {|>{\raggedright\arraybackslash}p{0.07\linewidth}
+   |>{\raggedright\arraybackslash}p{0.24\linewidth}
+   |>{\raggedright\arraybackslash}p{0.155\linewidth}
+   |>{\raggedright\arraybackslash}p{0.095\linewidth}
+   |>{\raggedright\arraybackslash}p{0.10\linewidth}
+   |>{\raggedright\arraybackslash}X|}
+  \hline
+  \rowcolor{VerdeTabla}
+  \cabeceraTabla{Código} & \cabeceraTabla{Enunciado} & \cabeceraTabla{Tipo} &
+  \cabeceraTabla{Producto o proceso} & \cabeceraTabla{Sistema o software} &
+  \cabeceraTabla{Justificación breve} \\ \hline
+
+  E01 & El paciente podrá reservar una cita eligiendo especialidad, médico,
+  fecha y hora entre los horarios disponibles.
+  & Funcional & Producto & Software &
+  La aplicación permite al paciente reservar por su cuenta. Al elegir un
+  turno libre, el software registra la cita. \\ \hline
+
+  \rowcolor{gray!12}
+  E02 & La plataforma enviará al paciente un recordatorio por mensaje de texto
+  24 horas antes de su cita.
+  & Funcional & Producto & Software &
+  Enviar el aviso es una función automática de la plataforma. Las 24 horas
+  marcan cuándo debe hacerlo. \\ \hline
+
+  E03 & La aplicación debe ser rápida.
+  & \textbf{Calidad}\newline
+  Eficiencia de desempeño\newline
+  Comportamiento temporal
+  & Producto & Software &
+  Entiendo \textbf{rápida} como una cualidad de la aplicación en uso, ligada
+  a su tiempo de respuesta, aunque no se especifica qué operación se medirá.
+  \\ \hline
+
+  \rowcolor{gray!12}
+  E04 & El recepcionista podrá registrar la llegada del paciente que se acerca
+  a la ventanilla.
+  & Funcional & Producto & Software &
+  La llegada ocurre en ventanilla, pero el requisito se centra en la función
+  que permite a recepción registrarla en la plataforma. \\ \hline
+
+  E05 & La plataforma se desarrollará en Java 21 con base de datos PostgreSQL,
+  tecnologías que domina el área de TI.
+  & Restricción tecnológica & Producto & Software &
+  La plataforma debe usar Java 21 y PostgreSQL. Eso limita la elección del
+  lenguaje y de la base de datos del software. \\ \hline
+\end{tabularx}}
+
 \section{Cuantificación de los requisitos de calidad}
 
 \section{Comparación con un compañero}
