@@ -63,6 +63,10 @@
 
 \section{Clasificación de los enunciados}
 
+Para los requisitos de calidad, se indican la característica y la
+subcaracterística que corresponden según el modelo de calidad del producto
+de la norma ISO/IEC 25010:2023~\cite{iso25010}.
+
 {\small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
@@ -148,10 +152,91 @@
   & Producto & Software &
   Es una cualidad de la aplicación entregada: su interfaz debe ser fácil de
   manejar para los adultos mayores al hacer tareas como reservar una cita. \\ \hline
+
+  E11 & El proyecto debe entregarse en un plazo máximo de seis meses.
+  & Restricción de plazo & Proceso & Sistema &
+  El plazo limita el tiempo que tiene el equipo para trabajar y entregar la
+  solución completa. Por eso es una restricción del proceso de todo el
+  proyecto. \\ \hline
+
+  \rowcolor{gray!12}
+  E12 & La sesión de un usuario se cerrará automáticamente tras 10 minutos
+  sin actividad.
+  & Funcional & Producto & Software &
+  El cierre de sesión es una función del producto en uso. La propia
+  aplicación controla la inactividad y decide cuándo cerrar la sesión. \\ \hline
+
+  E13 & El quiosco de la sala de espera leerá el número de cédula ingresado
+  en su pantalla táctil e imprimirá un ticket con el número de turno.
+  & Funcional & Producto & Sistema &
+  Dar un turno es una función que el paciente usa en el quiosco instalado.
+  Para que funcione, la pantalla, el programa y la impresora tienen que
+  trabajar juntos. \\ \hline
+
+  \rowcolor{gray!12}
+  E14 & La plataforma debe estar siempre disponible.
+  & \textbf{Calidad}\newline Fiabilidad\newline Disponibilidad & Producto &
+  Sistema &
+  La disponibilidad se evalúa en el servicio que reciben los pacientes. Para
+  que puedan entrar cuando lo necesitan, deben funcionar tanto la aplicación
+  como la infraestructura que la mantiene en línea. \\ \hline
+
+  E15 & El director médico podrá generar un reporte mensual de inasistencias
+  por especialidad.
+  & Funcional & Producto & Software &
+  Es una función de la aplicación que usa el director. El software toma los
+  registros de citas y los organiza por especialidad para generar el
+  reporte. \\ \hline
+
+  \rowcolor{gray!12}
+  E16 & Cada incremento se validará con el director médico al final de cada
+  iteración de dos semanas.
+  & Restricción de proceso & Proceso & Sistema &
+  La revisión con el director es un paso obligatorio en la forma de trabajar
+  del equipo y se aplica al avance de la solución completa. \\ \hline
+
+  E17 & El tratamiento de los datos personales de los pacientes debe cumplir
+  la Ley Orgánica de Protección de Datos Personales del Ecuador.
+  & Restricción legal & Producto & Sistema &
+  Cumplir la ley es una condición obligatoria para la solución en uso.
+  Abarca a todo el sistema que recoge, guarda o usa los datos personales. \\ \hline
+
+  \rowcolor{gray!12}
+  E18 & La plataforma debe integrarse sin problemas con el sistema de
+  facturación actual.
+  & \textbf{Calidad}\newline Compatibilidad\newline Interoperabilidad &
+  Producto & Sistema &
+  Es una cualidad de la solución en uso y depende de cómo trabajan juntos
+  los dos sistemas: ambos deben poder usar los datos de cobro que reciben. \\ \hline
+
+  E19 & Si el servidor principal falla, la plataforma debe restablecer el
+  servicio en menos de 30 minutos sin perder ninguna cita confirmada.
+  & \textbf{Calidad}\newline Fiabilidad\newline Recuperabilidad & Producto &
+  Sistema &
+  Es una cualidad del servicio en uso. La recuperación abarca el sistema
+  completo porque la aplicación, el servidor que la mantiene disponible y la
+  base de datos deben volver a funcionar juntos para que se pueda acceder a
+  las citas confirmadas. \\ \hline
+
+  \rowcolor{gray!12}
+  E20 & Todo cambio en el código fuente será revisado por otro integrante
+  del equipo antes de integrarse a la rama principal.
+  & Restricción de proceso & Proceso & Software &
+  La revisión por otra persona es un paso obligatorio del equipo antes de
+  incorporar un cambio. Se aplica al código de la aplicación. \\ \hline
 \end{longtable}}
 
 \section{Cuantificación de los requisitos de calidad}
 
 \section{Comparación con un compañero}
+
+\renewcommand{\refname}{Referencias}
+\begin{thebibliography}{1}
+\bibitem{iso25010}
+ISO/IEC, \emph{Systems and software engineering --- Systems and software
+Quality Requirements and Evaluation (SQuaRE) --- Product quality model},
+ISO/IEC 25010:2023, 2.\textsuperscript{a} ed., nov. 2023.
+[En línea]. Disponible en: \texttt{https://www.iso.org/standard/78176.html}
+\end{thebibliography}
 
 \end{document}
