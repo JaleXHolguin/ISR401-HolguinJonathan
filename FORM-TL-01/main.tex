@@ -5,6 +5,7 @@
 \usepackage[margin=2cm,headheight=14pt,headsep=18pt,footskip=22pt]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{titlesec}
@@ -65,31 +66,32 @@
 {\small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
-\noindent\begin{tabularx}{\linewidth}
+\begin{longtable}
   {|>{\raggedright\arraybackslash}p{0.07\linewidth}
    |>{\raggedright\arraybackslash}p{0.24\linewidth}
    |>{\raggedright\arraybackslash}p{0.155\linewidth}
    |>{\raggedright\arraybackslash}p{0.095\linewidth}
    |>{\raggedright\arraybackslash}p{0.10\linewidth}
-   |>{\raggedright\arraybackslash}X|}
+   |>{\raggedright\arraybackslash}p{\dimexpr0.34\linewidth-12\tabcolsep-7\arrayrulewidth\relax}|}
   \hline
   \rowcolor{VerdeTabla}
   \cabeceraTabla{Código} & \cabeceraTabla{Enunciado} & \cabeceraTabla{Tipo} &
   \cabeceraTabla{Producto o proceso} & \cabeceraTabla{Sistema o software} &
   \cabeceraTabla{Justificación breve} \\ \hline
+  \endhead
 
   E01 & El paciente podrá reservar una cita eligiendo especialidad, médico,
   fecha y hora entre los horarios disponibles.
   & Funcional & Producto & Software &
-  La aplicación permite al paciente reservar por su cuenta. Al elegir un
-  turno libre, el software registra la cita. \\ \hline
+  Reservar un turno es una función de la aplicación que se entrega. El
+  paciente elige un horario libre y el software guarda la cita. \\ \hline
 
   \rowcolor{gray!12}
   E02 & La plataforma enviará al paciente un recordatorio por mensaje de texto
   24 horas antes de su cita.
   & Funcional & Producto & Software &
-  Enviar el aviso es una función automática de la plataforma. Las 24 horas
-  marcan cuándo debe hacerlo. \\ \hline
+  Enviar el recordatorio es una función automática de la plataforma en uso.
+  Las 24 horas indican cuándo el software debe iniciar el envío. \\ \hline
 
   E03 & La aplicación debe ser rápida.
   & \textbf{Calidad}\newline
@@ -104,15 +106,49 @@
   E04 & El recepcionista podrá registrar la llegada del paciente que se acerca
   a la ventanilla.
   & Funcional & Producto & Software &
-  La llegada ocurre en ventanilla, pero el requisito se centra en la función
-  que permite a recepción registrarla en la plataforma. \\ \hline
+  Registrar la llegada es una función de la aplicación que se entrega. El
+  recepcionista la usa para dejar constancia de que el paciente llegó a
+  ventanilla. \\ \hline
 
   E05 & La plataforma se desarrollará en Java 21 con base de datos PostgreSQL,
   tecnologías que domina el área de TI.
   & Restricción tecnológica & Producto & Software &
-  La plataforma debe usar Java 21 y PostgreSQL. Eso limita la elección del
-  lenguaje y de la base de datos del software. \\ \hline
-\end{tabularx}}
+  Java 21 y PostgreSQL son obligatorios en la plataforma que se entrega. Esa
+  condición limita la elección del lenguaje y la base de datos del software. \\ \hline
+
+  \rowcolor{gray!12}
+  E06 & El médico podrá consultar la lista de pacientes del día y marcar cada
+  consulta como atendida.
+  & Funcional & Producto & Software &
+  Consultar y marcar consultas son funciones del producto que el médico usa
+  directamente en la aplicación. \\ \hline
+
+  E07 & Los datos de salud de los pacientes deben estar seguros.
+  & \textbf{Calidad}\newline Seguridad\newline Confidencialidad
+  & Producto & Software &
+  Es una cualidad del producto en uso: el software protege la
+  confidencialidad al limitar quién puede consultar los datos de salud. \\ \hline
+
+  \rowcolor{gray!12}
+  E08 & La aplicación móvil debe funcionar en teléfonos con Android 10 o superior.
+  & Restricción técnica & Producto & Software &
+  Es una restricción del producto: fija la versión mínima de Android que
+  debe admitir la aplicación móvil. \\ \hline
+
+  E09 & Una cita cancelada con menos de cuatro horas de anticipación se
+  registrará como inasistencia.
+  & Funcional & Producto & Software &
+  Es una regla que ejecuta el software en uso: al cancelar la cita,
+  comprueba cuánto falta y la registra como inasistencia si quedan menos de
+  cuatro horas. \\ \hline
+
+  \rowcolor{gray!12}
+  E10 & La plataforma debe ser fácil de usar para los pacientes adultos mayores.
+  & \textbf{Calidad}\newline Capacidad de interacción\newline Operabilidad
+  & Producto & Software &
+  Es una cualidad de la aplicación entregada: su interfaz debe ser fácil de
+  manejar para los adultos mayores al hacer tareas como reservar una cita. \\ \hline
+\end{longtable}}
 
 \section{Cuantificación de los requisitos de calidad}
 
