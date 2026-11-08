@@ -10,6 +10,7 @@
 \usepackage{lastpage}
 \usepackage{titlesec}
 \usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
 
 \renewcommand{\familydefault}{\sfdefault}
 \definecolor{VerdeUteq}{HTML}{006537}
@@ -298,6 +299,110 @@ indica la característica y la subcaracterística de ISO/IEC
 \end{longtable}}
 
 \section{Comparación con un compañero}
+
+Comparé mi clasificación de E01 a E20 y los cinco requisitos cuantificados
+con el trabajo de un compañero. Coincidimos en el tipo y en la distinción
+entre producto y proceso de los 20 enunciados. En 17 también coincidimos en
+el alcance. En los puntos donde encontramos diferencias, cada uno mantuvo su
+respuesta. A continuación explico por qué conservé las decisiones de mi
+informe.
+
+\subsection{Clasificación}
+
+\subsubsection*{E14, E18 y E19 --- Alcance de sistema o software}
+
+Mi compañero marcó \textbf{software} en los tres enunciados y yo marqué
+\textbf{sistema}. En E14 consideré la disponibilidad del servicio completo,
+que depende de la aplicación y de los equipos que la mantienen en línea. En
+E18 consideré el intercambio de datos entre la plataforma de citas y el
+sistema de facturación. En E19 tomé en cuenta que, tras la falla del
+servidor, deben recuperarse el acceso al servicio y las citas guardadas.
+
+\textbf{Criterio que mantuve.} Conservé \textbf{sistema} en los tres casos
+porque la condición se comprueba en el servicio completo o en el trabajo
+conjunto de varios componentes.
+
+\subsubsection*{E03, E07, E14, E18 y E19 --- Detalle de la clasificación de calidad}
+
+Coincidimos en las características de calidad. En mi tabla indiqué también la
+subcaracterística para cada caso: comportamiento temporal, confidencialidad,
+disponibilidad, interoperabilidad y recuperabilidad, respectivamente. Mi
+compañero sí menciona algunas de ellas al justificar o cuantificar los
+enunciados, aunque su tabla muestra solo la característica.
+
+\textbf{Criterio que mantuve.} Dejé la característica y la subcaracterística
+en la tabla de clasificación, como pide la lista de cotejo.
+
+\subsubsection*{E10 --- Facilidad de uso}
+
+Mi compañero puso \textbf{usabilidad} y yo \textbf{capacidad de interacción}.
+En la cuantificación, ambos relacionamos el enunciado con la
+\textbf{operabilidad}, porque trata de qué tan fácil resulta manejar la
+aplicación para reservar una cita.
+
+\textbf{Criterio que mantuve.} Usé \textbf{capacidad de interacción} como
+característica y \textbf{operabilidad} como subcaracterística, siguiendo los
+nombres del modelo de calidad del producto de ISO/IEC 25010:2023.
+
+\subsection{Cuantificación}
+
+\subsubsection*{E03 --- Rapidez de la aplicación}
+
+Mi compañero mide la confirmación de una reserva y pide un máximo de
+\textbf{3 segundos}. Yo mido la consulta de horarios y pido que al menos el
+\textbf{95 \%} de las búsquedas se resuelvan en \textbf{2 segundos o menos}.
+Los dos usamos la carga de \textbf{300 usuarios simultáneos}.
+
+\textbf{Criterio que mantuve.} Elegí medir la consulta de horarios porque el
+paciente puede hacer varias búsquedas antes de elegir un turno. Los tiempos
+de las dos propuestas corresponden a operaciones distintas.
+
+\subsubsection*{E07 --- Seguridad de los datos de salud}
+
+Mi compañero propone cifrar los datos de salud guardados en PostgreSQL con
+\textbf{AES-256}. Yo propongo comprobar que \textbf{ninguno de los 30
+intentos sin permiso} muestre esos datos.
+
+\textbf{Criterio que mantuve.} Elegí la prueba de acceso para comprobar quién
+puede ver los datos desde la plataforma. La propuesta de cifrado se centra en
+proteger los datos guardados.
+
+\subsubsection*{E10 --- Facilidad para reservar}
+
+Ambos proponemos que el \textbf{90 \%} complete la reserva en unos \textbf{3
+minutos}. Mi compañero pide menos de 3 minutos, permite participantes de 60
+años o más y fija un máximo de cuatro pantallas. Yo acepto 3 minutos exactos,
+tomo participantes mayores de 60 años y compruebo si logran reservar sin
+ayuda desde un Android de gama media o baja.
+
+\textbf{Criterio que mantuve.} Conservé la prueba sin ayuda en el tipo de
+celular que describe el caso. Así puedo comprobar si el participante logra
+reservar y confirmar la cita por su cuenta.
+
+\subsubsection*{E14 --- Disponibilidad del servicio}
+
+Coincidimos en el \textbf{99,9 \% mensual}. Mi compañero lo mide durante el
+horario de atención, de lunes a sábado de 07:00 a 19:00. Yo lo mido
+\textbf{las 24 horas}, usando la consulta de horarios y la confirmación de
+una reserva.
+
+\textbf{Criterio que mantuve.} Conservé la medición durante todo el día para
+tomar en cuenta a quienes buscan o reservan una cita fuera del horario de
+atención.
+
+\subsubsection*{E18 --- Integración con facturación}
+
+Mi compañero pide \textbf{99,5 \% de transmisiones exitosas} y un tiempo de
+respuesta de hasta \textbf{2 segundos}. Yo compruebo que \textbf{100 de 100
+cobros} queden registrados una sola vez, con los datos correctos y
+confirmados en un máximo de \textbf{30 segundos}.
+
+\textbf{Criterio que mantuve.} Conservé la prueba del registro completo.
+Además de recibir una respuesta, me interesa comprobar que el cobro quedó
+guardado con el importe correcto y sin duplicarse.
+
+La fuente de la comparación fue el informe de \textbf{Cristopher Lavayen},
+páginas 1 a 4. \href{https://github.com/clavayenb-2026/ISR401-LavayenCristopher/blob/main/FORM-TL-01/main.pdf}{Ver el PDF en su repositorio de GitHub}.
 
 \section{Uso de IA}
 
