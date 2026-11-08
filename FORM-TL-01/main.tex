@@ -231,22 +231,25 @@ de la norma ISO/IEC 25010:2023~\cite{iso25010}.
 Los límites de esta tabla son propuestas para el caso de citas médicas. Para
 plantear las pruebas se tomaron en cuenta los 300 usuarios previstos en la
 hora de mayor demanda, los celulares que suelen usar los pacientes y el
-sistema de facturación que ya está en funcionamiento.
-
+sistema de facturación que ya está en funcionamiento. La última columna
+indica la característica y la subcaracterística de ISO/IEC
+25010:2023~\cite{iso25010}.
 
 {\small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
 \begin{longtable}
   {|>{\raggedright\arraybackslash}p{0.07\linewidth}
-   |>{\raggedright\arraybackslash}p{0.34\linewidth}
-   |>{\raggedright\arraybackslash}p{0.25\linewidth}
+   |>{\raggedright\arraybackslash}p{0.29\linewidth}
+   |>{\raggedright\arraybackslash}p{0.19\linewidth}
    |>{\raggedright\arraybackslash}p{0.08\linewidth}
-   |>{\raggedright\arraybackslash}p{\dimexpr0.26\linewidth-10\tabcolsep-6\arrayrulewidth\relax}|}
+   |>{\raggedright\arraybackslash}p{0.10\linewidth}
+   |>{\raggedright\arraybackslash}p{\dimexpr0.27\linewidth-12\tabcolsep-7\arrayrulewidth\relax}|}
   \hline
   \rowcolor{VerdeTabla}
   \cabeceraTabla{Código} & \cabeceraTabla{Requisito cuantificado} &
-  \cabeceraTabla{Métrica} & \cabeceraTabla{Unidad} & \cabeceraTabla{Umbral}
+  \cabeceraTabla{Métrica} & \cabeceraTabla{Unidad} & \cabeceraTabla{Umbral} &
+  \cabeceraTabla{ISO/IEC 25010}
   \\ \hline
   \endhead
 
@@ -254,30 +257,34 @@ sistema de facturación que ya está en funcionamiento.
   resultado correcto de al menos el 95 \% de las consultas de horarios en 2
   segundos o menos.
   & Porcentaje de consultas que muestran el resultado correcto en 2 segundos o
-  menos, sobre todas las consultas realizadas.
-  & \% & Al menos 95 \% \\ \hline
+  menos, sobre 1.000 consultas de prueba.
+  & \% & Al menos 95 \%
+  & Eficiencia de desempeño\newline Comportamiento temporal \\ \hline
 
   \rowcolor{gray!12}
   E07 & La plataforma debe impedir que una persona sin permiso consulte los
-  datos de salud de un paciente. Ninguno de los 30 intentos de prueba sin
-  permiso debe mostrar esos datos.
+  datos de salud de un paciente. En una prueba con datos ficticios, ninguno
+  de los 30 intentos sin permiso debe mostrar esos datos.
   & Número de intentos sin permiso que muestran datos de salud.
-  & Intentos & 0 de 30 \\ \hline
+  & Intentos & 0 de 30
+  & Seguridad\newline Confidencialidad \\ \hline
 
   E10 & Al menos 9 de 10 participantes mayores de 60 años deben poder reservar
-  una cita desde un celular y llegar a la pantalla de confirmación en 3
-  minutos o menos, sin ayuda.
+  una cita desde un celular Android de gama media o baja y llegar a la
+  pantalla de confirmación en 3 minutos o menos, sin ayuda.
   & Porcentaje de participantes que completan la reserva sin ayuda y dentro
   del tiempo indicado.
-  & \% & Al menos 90 \% (9 de 10) \\ \hline
+  & \% & Al menos 90 \% (9 de 10)
+  & Capacidad de interacción\newline Operabilidad \\ \hline
 
   \rowcolor{gray!12}
   E14 & La plataforma debe permitir consultar horarios y confirmar una reserva
   durante al menos el 99,9 \% de los minutos de cada mes, las 24 horas del
   día.
-  & Porcentaje de minutos del mes en los que se completan correctamente las
-  dos operaciones de prueba.
-  & \% & Al menos 99,9 \% \\ \hline
+  & Porcentaje de minutos del mes en los que ambas operaciones se completan
+  correctamente en la prueba de ese minuto. Se incluye el mantenimiento.
+  & \% & Al menos 99,9 \%
+  & Fiabilidad\newline Disponibilidad \\ \hline
 
   E18 & Al enviar 100 cobros válidos, el sistema de facturación debe registrar
   cada uno una sola vez, con el identificador y el importe correctos. La
@@ -285,40 +292,19 @@ sistema de facturación que ya está en funcionamiento.
   segundos desde su envío.
   & Número de cobros que se registran una sola vez, con los datos correctos, y
   se confirman a tiempo.
-  & Cobros & 100 de 100 \\ \hline
+  & Cobros & 100 de 100
+  & Compatibilidad\newline Interoperabilidad \\ \hline
 
 \end{longtable}}
 
-\subsection*{Cómo comprobar los requisitos}
-
-\begin{itemize}
-
-  \item \textbf{E03. Rapidez al consultar horarios.} Medir 1.000 búsquedas con
-  300 usuarios conectados, desde que se pulsa \textbf{Buscar} hasta que
-  aparecen los turnos o el aviso de que no hay horarios libres. Los errores y
-  las consultas sin respuesta cuentan como fallos.
-  \item \textbf{E07. Acceso a datos de salud.} Con datos ficticios, hacer 10
-  intentos sin iniciar sesión, 10 con una cuenta sin permiso y 10 desde la
-  cuenta de otro paciente. Confirmar también que una cuenta autorizada sí
-  puede acceder.
-  \item \textbf{E10. Facilidad para reservar.} Dar la misma tarea a los 10
-  participantes, con la sesión abierta y un celular Android de gama media o
-  baja. Medir desde que buscan un horario hasta que confirman la cita de
-  prueba, sin ayuda.
-  \item \textbf{E14. Disponibilidad del servicio.} Consultar horarios y
-  confirmar una reserva de prueba cada minuto desde fuera de la plataforma.
-  Usar una agenda separada de las citas reales. El minuto cuenta como
-  disponible si ambas acciones terminan correctamente antes de la siguiente
-  prueba. El 99,9 \% permite hasta 43 minutos no disponibles en un mes de 30
-  días, incluido el mantenimiento.
-  \item \textbf{E18. Registro de cobros.} Enviar 100 cobros ficticios por la
-  interfaz de prueba del proveedor. Revisar que cada cobro figure una sola
-  vez, con el identificador y el importe correctos, y que su confirmación
-  llegue en 30 segundos o menos.
-
-\end{itemize}
-
 \section{Comparación con un compañero}
+
+\section{Uso de IA}
+
+Utilicé ChatGPT como apoyo para mejorar algunas partes de la redacción y
+explorar formas de medir los requisitos de calidad. También lo consulté para
+resolver dudas sobre la sintaxis de LaTeX y la compilación del informe a PDF.
+Revisé las sugerencias y decidí cuáles incorporar al documento.
 
 \renewcommand{\refname}{Referencias}
 \begin{thebibliography}{1}
