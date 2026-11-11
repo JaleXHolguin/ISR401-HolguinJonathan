@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm,headheight=14pt,headsep=18pt,footskip=22pt]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{VerdeUteq}{HTML}{006537}
+\definecolor{AzulTitulo}{HTML}{19598A}
+\definecolor{Dorado}{HTML}{D89D0B}
+
+\newcommand{\estudiante}{Jonathan Holguín}
+\newcommand{\asignatura}{Ingeniería de Requerimientos (ISR-401)}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UTEQ \textperiodcentered\ \asignatura}
+\fancyhead[R]{\small TA-IND-01 \textperiodcentered\ SPA 2026--2027}
+\fancyfoot[L]{\small \estudiante}
+\fancyfoot[R]{\small Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\titleformat{\section}
+  {\large\bfseries}{\thesection.}{0.9em}{\color{VerdeUteq}}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\color{VerdeUteq} Universidad Técnica Estatal de Quevedo\par}
+  \vspace{0.3em}
+  {\small Facultad de Ciencias de la Computación
+    \textcolor{Dorado}{\textbullet} Carrera de Software\par}
+  \vspace{1em}
+  {\large\bfseries\color{AzulTitulo} ACTIVIDAD SUMATIVA\par}
+  \vspace{0.25em}
+  {\large\bfseries TA-IND-01\par}
+  {\Large\bfseries\color{VerdeUteq}
+    Trabajo individual: IEEE 29148 y tipos de requisitos de un sistema conocido\par}
+  \vspace{0.6em}
+  {\normalsize \estudiante\par}
+\end{center}
+\noindent\textcolor{Dorado}{\rule{\linewidth}{0.8pt}}
+
+\section{Sistema elegido}
+
+GitHub Desktop para Windows permite trabajar con repositorios Git desde una
+interfaz gráfica. Lo usan estudiantes y desarrolladores para revisar sus
+cambios antes de guardarlos en un commit y compartirlos en GitHub%
+~\cite{githubDesktop}. El análisis se centrará en tres acciones que forman
+parte de un mismo flujo de trabajo: revisar qué cambió en los archivos,
+organizar esos cambios en ramas y sincronizar el repositorio local con
+GitHub.
+
+\section{Resumen analítico de ISO/IEC/IEEE 29148:2018}
+
+\section{Glosario}
+
+\section{Requisitos y clasificación}
+
+\section{Autoevaluación de los requisitos}
+
+\section{Reflexión}
+
+\section{Uso de IA}
+
+\renewcommand{\refname}{Referencias}
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+
+\end{document}
