@@ -1,18 +1,20 @@
-# FORM-TL-01 — Taller de tipos de requisitos
+# ISR401 — Ingeniería de Requerimientos
 
-## Compilar el informe
+## Compilar un informe
 
 Requisito: Python 3 instalado en Windows x64.
 
-Desde la carpeta del repositorio, ejecutar:
+Abrir una terminal en la carpeta raíz del proyecto, donde está `compilar.py`, y ejecutar el siguiente comando.
 
 ~~~powershell
 py compilar.py
 ~~~
 
-La primera compilación requiere internet para descargar Tectonic 0.17.0 y los paquetes de LaTeX. El script compila `FORM-TL-01/main.tex` y genera `FORM-TL-01/main.pdf`.
+El script comprueba Tectonic 0.17.0 y lo descarga si hace falta. La primera compilación requiere internet para descargar el compilador y los paquetes de LaTeX.
 
-Para generar el PDF en otra carpeta, usa `--salida`.
+Después aparece un menú con las carpetas de la raíz que contienen `main.tex`. Escribir el número de la tarea y pulsar Enter. El script compila su `main.tex` y guarda `main.pdf` en la carpeta de esa tarea.
+
+Para generar el PDF en otra carpeta, **usar** `--salida`.
 
 ~~~powershell
 py compilar.py --salida revision
