@@ -50,13 +50,144 @@
 
 GitHub Desktop para Windows permite trabajar con repositorios Git desde una
 interfaz gráfica. Lo usan estudiantes y desarrolladores para revisar sus
-cambios antes de guardarlos en un commit y compartirlos en GitHub%
-~\cite{githubDesktop}. El análisis se centrará en tres acciones que forman
-parte de un mismo flujo de trabajo: revisar qué cambió en los archivos,
-organizar esos cambios en ramas y sincronizar el repositorio local con
-GitHub.
+cambios antes de guardarlos en un commit y compartirlos en
+GitHub~\cite{githubDesktop}.
+
+El análisis se centra en tres acciones del trabajo con GitHub Desktop.
+Revisar qué cambió en los archivos, organizar esos cambios en ramas y
+sincronizar el repositorio local con GitHub.
 
 \section{Resumen analítico de ISO/IEC/IEEE 29148:2018}
+
+\subsection*{Cómo se escribe un requisito}
+
+Antes de hacer un commit, el usuario puede querer revisar un archivo para
+decidir si lo incluye. Esa necesidad sirve de punto de partida. Para
+escribir el requisito, hay que indicar qué debe mostrar el programa y
+cuándo~\cite[Sec. 5.2.3]{iso29148}, \cite[Sec. 5.2.4]{iso29148}.
+
+Un requisito sería \textbf{Cuando el usuario seleccione un archivo de texto
+modificado en la vista de cambios, GitHub Desktop debe mostrar las líneas
+añadidas y eliminadas desde el último commit de la rama activa.} El ejemplo
+indica qué hace el usuario y qué debe mostrar el programa~\cite[Sec. 5.2.4]{iso29148}.
+
+El requisito se aplica a los archivos de texto. Si el proyecto exige que el
+programa funcione en Windows, eso se anota como una restricción. El equipo
+de desarrollo puede elegir cómo calcular las diferencias~\cite[Sec. 5.2.4]{iso29148}.
+
+Un mismo archivo puede tener contenido distinto en dos ramas. Si el programa
+compara con el último commit de otra rama, podría mostrar cambios que el
+usuario no hizo en la rama que tiene abierta.
+
+Para probarlo, se pueden preparar dos ramas con versiones distintas del
+mismo archivo y editar una de ellas. La vista debe mostrar los cambios
+frente al último commit de la rama donde se editó el archivo~\cite[Sec. 5.2.3]{iso29148}, \cite[Sec. 5.2.4]{iso29148}.
+
+\subsection*{Características de un requisito}
+
+El mismo ejemplo sirve para entender las nueve características que la norma
+pide revisar en cada requisito~\cite[Sec. 5.2.5]{iso29148}.
+
+\begin{enumerate}
+  \item \textbf{Necesario.} La función permite revisar los cambios antes del
+  commit. Sin ella, el usuario tendría que buscar por su cuenta qué líneas
+  cambió.
+  \item \textbf{Apropiado.} El nivel de detalle depende de lo que se
+  describe. Para esta pantalla basta con decir qué líneas debe mostrar. El
+  equipo puede decidir después cómo encontrarlas.
+  \item \textbf{No ambiguo.} El último commit de la rama activa indica qué
+  versión se usa para comparar. Si dijera ``la versión anterior'', alguien
+  podría entender que se refiere a la última vez que guardó el archivo.
+  \item \textbf{Completo.} Se entiende por sí solo porque indica qué archivo
+  selecciona el usuario, con qué versión se compara y qué debe aparecer en
+  pantalla.
+  \item \textbf{Singular.} Mostrar los cambios es una sola función.
+  Guardarlos en un commit merece su propio requisito porque se puede probar
+  por separado.
+  \item \textbf{Factible.} El equipo debe poder crear la función con el
+  tiempo y los recursos que tiene, sin asumir un riesgo demasiado alto.
+  Limitarla a archivos de texto ayuda a calcular cuánto trabajo requiere.
+  \item \textbf{Verificable.} Se añade una línea y se borra otra en un
+  archivo de prueba. La vista de cambios debe mostrar ambas correctamente.
+  \item \textbf{Correcto.} Responde a lo que el usuario necesita. Para
+  decidir qué incluir en el commit, le hace falta ver las líneas que
+  cambiaron.
+  \item \textbf{Conforme.} Sigue el formato acordado. Por ejemplo, se puede
+  usar un código para cada requisito y el verbo \textbf{debe} para señalar
+  lo obligatorio.
+\end{enumerate}
+
+\subsection*{El conjunto de requisitos}
+
+Un conjunto es \textbf{completo} si cubre lo que se acordó y resuelve los
+puntos pendientes. Es \textbf{consistente} si los requisitos no se
+contradicen ni se repiten y si el documento usa los mismos términos y
+unidades~\cite[Sec. 5.2.6]{iso29148}.
+
+También debe ser \textbf{factible}. Dos funciones pueden ser posibles por
+separado y aun así necesitar más tiempo o recursos de los que el equipo
+tiene para hacerlas juntas.
+
+El conjunto es \textbf{comprensible} si se entiende qué debe hacer el
+sistema y cómo se relacionan sus partes. Se puede \textbf{validar} si es
+posible revisar con los usuarios si lo descrito les sirve para completar su
+trabajo~\cite[Sec. 5.2.6]{iso29148}.
+
+Revisar los cambios, crear un commit y enviarlo a GitHub son pasos que se
+pueden probar por separado. Al probarlos juntos, conviene revisar si el
+commit respeta la selección de archivos hecha en la pantalla anterior.
+
+Si ese paso queda sin explicar, cada pantalla podría funcionar como se
+describe y aun así se podrían guardar cambios que la persona quería dejar
+fuera. Probar el recorrido completo ayuda a detectar ese problema~\cite[Sec. 5.2.5]{iso29148}, \cite[Sec. 5.2.6]{iso29148}.
+
+Dos requisitos pueden dar instrucciones distintas sobre el mismo paso. Uno
+podría pedir que el commit guarde solo los archivos marcados y otro que
+incluya todos los que se modificaron.
+
+Con un solo archivo modificado y marcado, ambas instrucciones darían el
+mismo resultado. Con dos archivos modificados y solo uno marcado, se vería
+la diferencia. Ese caso ayuda a decidir si se trata de acciones distintas o
+si hay que corregir un requisito~\cite[Sec. 5.2.6]{iso29148}.
+
+Revisar todos los pasos también ayuda a ver qué falta. Por ejemplo, el
+equipo puede explicar cómo crear y enviar un commit, pero pasar por alto qué
+mensaje debe mostrar el programa cuando falla el envío.
+
+En ese caso, la persona necesita saber si el commit quedó guardado en su
+equipo y si llegó a GitHub. Revisar el recorrido completo permite decidir si
+hace falta escribir un requisito para ese caso~\cite[Sec. 5.2.6]{iso29148}.
+
+\subsection*{Redacción y atributos}
+
+Decir que la vista de cambios debe ser ``rápida'' deja sin definir cuánto
+puede esperar el usuario. Para probarla, el equipo debe acordar cuándo
+empieza y termina la medición, qué archivo usará y cuánto tiempo aceptará.
+
+La norma pide evitar frases poco claras como ``la mejor interfaz'', ``fácil
+de usar'', ``casi siempre'' o ``si es posible''. También conviene evitar
+``entre otros'' si hace falta indicar exactamente qué se incluye~\cite[Sec. 5.2.7]{iso29148}.
+
+La norma también advierte sobre expresiones como ``este'' sin decir a qué se
+refiere, ``más rápido'' sin indicar con qué se compara y ``siempre'' cuando
+no se puede asegurar~\cite[Sec. 5.2.7]{iso29148}.
+
+Si se cita otro documento, hay que indicar su versión y la parte a la que se
+hace referencia~\cite[Sec. 5.2.7]{iso29148}.
+
+Con ``mostrar los cambios y/o abrir el historial'', alguien podría aprobar
+la prueba con solo ver los cambios, mientras que otra persona esperaría que
+también se abra el historial. Si hacen falta ambas acciones, se puede
+escribir un requisito para cada una e indicar cuándo debe ocurrir~\cite[Sec. 5.2.5]{iso29148}, \cite[Sec. 5.2.7]{iso29148}.
+
+Los atributos son datos que acompañan al requisito. Por ejemplo, el código
+RF-01 permite encontrar el requisito de mostrar los cambios aunque cambie su
+redacción. La justificación explica por qué se necesita~\cite[Sec. 5.2.8.1]{iso29148}, \cite[Sec. 5.2.8.2]{iso29148}.
+
+La versión indica cuál es el texto actual y la prioridad ayuda a ordenar el
+trabajo. El tipo también es un atributo. En este caso, el requisito es
+\textbf{funcional} porque describe una acción que realiza la
+aplicación~\cite[Sec. 5.2.8.2]{iso29148}, \cite[Sec. 5.2.8.3]{iso29148}.
 
 \section{Glosario}
 
