@@ -9,6 +9,7 @@
 \usepackage{lmodern}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
 \renewcommand{\familydefault}{\sfdefault}
@@ -432,6 +433,30 @@ En los cinco intentos aparece el aviso. Al cancelar, se conserva el
 cambio en cada archivo.\\
 \end{longtable}
 \endgroup
+
+\newpage
+\subsection*{Capturas de GitHub Desktop}
+
+Las capturas se tomaron en un repositorio local de prueba. La
+Figura~\ref{fig:cambios} muestra las líneas modificadas en la rama
+\texttt{main} (R01), la Figura~\ref{fig:historial} muestra sus tres
+commits (R02) y la Figura~\ref{fig:descarte} muestra el aviso antes
+de descartar cambios del README (R15).
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=.83\linewidth,trim=0 306bp 0 0,clip]{figuras/r01-vista-de-cambios.jpg}
+  \caption{R01. Una línea eliminada y una añadida en la rama \texttt{main}.}
+  \label{fig:cambios}
+
+  \includegraphics[width=.83\linewidth,trim=0 270bp 0 0,clip]{figuras/r02-historial.jpg}
+  \caption{R02. Historial con los tres commits de la rama \texttt{main}.}
+  \label{fig:historial}
+
+  \includegraphics[width=.83\linewidth,trim=0 141bp 0 0,clip]{figuras/r15-aviso-de-descarte.jpg}
+  \caption{R15. Confirmación antes de descartar los cambios del README.}
+  \label{fig:descarte}
+\end{figure}
 
 \section{Autoevaluación de los requisitos}
 
