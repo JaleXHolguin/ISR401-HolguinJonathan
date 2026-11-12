@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 \renewcommand{\familydefault}{\sfdefault}
 \definecolor{VerdeUteq}{HTML}{006537}
 \definecolor{AzulTitulo}{HTML}{19598A}
@@ -320,19 +321,19 @@ En una rama de prueba con tres commits, el historial muestra los tres
 commits con sus mensajes.\\
 \hline
 
-R03 & Si el usuario confirma un nombre válido y disponible y elige la
-rama activa como origen, GitHub Desktop debe crear la rama local desde
-el último commit de esa rama. &
+R03 & Al confirmar una rama local nueva desde la rama activa, con un
+nombre que Git acepte y que no exista entre las ramas locales, GitHub
+Desktop debe crearla desde el último commit de la rama activa. &
 Funcional & --- & ID del commit inicial &
-Al terminar, las dos ramas apuntan al mismo commit.\\
+Crear una rama con un nombre nuevo. Al terminar, ambas ramas apuntan al
+mismo commit.\\
 \hline
 
-R04 & Cuando el usuario guarde los cambios de un archivo con
-\textit{Stash}, GitHub Desktop debe mostrar una entrada con esos
-cambios en la misma rama. &
+R04 & Cuando el usuario use \textit{Stash All Changes}, GitHub Desktop
+debe mostrar el guardado en \textit{Stashed Changes} de la rama activa. &
 Funcional & --- & Entradas visibles &
-Al guardar un cambio del README, se puede abrir la entrada y ver el
-cambio.\\
+Modificar el README y usar la opción de guardado. En Stashed Changes
+aparece la modificación.\\
 \hline
 
 R05 & Al crear un commit desde la vista de cambios, GitHub Desktop debe
@@ -372,15 +373,15 @@ En el equipo de prueba, la vista de cambios carga el repositorio
 local elegido.\\
 \hline
 
-R10 & GitHub Desktop debe ofrecer un flujo de commit local en el que,
-en su primer uso, al menos cuatro de cinco estudiantes que ya saben
-crear un commit desde la terminal guarden el archivo preparado en un
-commit en tres minutos o menos y sin ayuda. &
+R10 & Con el README como único archivo modificado, GitHub Desktop debe
+ofrecer un flujo en el que al menos cuatro de cinco estudiantes que ya
+saben crear un commit desde la terminal completen su primer commit en
+la aplicación en tres minutos o menos y sin ayuda. &
 Calidad en uso & --- & Estudiantes que completan la tarea &
-Antes de la prueba, cada estudiante crea un commit desde la terminal.
-En GitHub Desktop, medir desde que se abre la vista de cambios hasta que
-aparece el commit en el historial. Cumplen al menos cuatro de cinco en
-tres minutos o menos y sin ayuda.\\
+Comprobar primero un commit en la terminal. En GitHub Desktop, medir
+desde que se abre la vista de cambios hasta que aparece en el historial
+el commit con el README. Cumplen al menos cuatro de cinco en tres
+minutos o menos y sin ayuda.\\
 \hline
 
 R11 & Cuando el usuario seleccione un archivo de texto de 1\,000 líneas
@@ -393,25 +394,28 @@ Medir desde el clic hasta que aparecen las diferencias. Cada uno de los
 10 intentos tarda como máximo 2~s.\\
 \hline
 
-R12 & Durante la actualización de la vista de cambios con 200 archivos
-de texto modificados de 10~KiB cada uno, GitHub Desktop debe usar hasta
-250~MiB más de memoria privada que antes de actualizar. &
+R12 & Al actualizar la vista de cambios con 200 archivos de texto
+modificados de 10~KiB cada uno, GitHub Desktop debe usar hasta 250~MiB más
+de memoria privada que con la misma vista abierta y el repositorio sin
+cambios. &
 Calidad &
 Eficiencia de desempeño / Utilización de recursos~\cite[Sec. 3.2.2]{iso25010} &
 Aumento máximo de memoria (MiB) &
 Sumar la memoria privada de los procesos de la aplicación. En tres
-pruebas, restar al máximo el valor inicial. La diferencia es de
-250~MiB o menos en cada prueba.\\
+pruebas, comparar el máximo durante la actualización con el valor sin
+cambios. La diferencia es de 250~MiB o menos en cada prueba.\\
 \hline
 
-R13 & Con la opción de ignorar espacios desactivada, GitHub Desktop
-debe mostrar las mismas líneas añadidas y borradas que
-\texttt{git diff HEAD} para cada archivo de texto modificado. &
+R13 & Al seleccionar un archivo de texto modificado sin cambios preparados
+para el commit, GitHub Desktop debe mostrar las mismas líneas añadidas y
+borradas que \texttt{git diff HEAD} para ese archivo, con la opción de
+ignorar espacios desactivada. &
 Calidad &
 Adecuación funcional / Corrección funcional~\cite[Sec. 3.1.2]{iso25010} &
 Archivos con diferencias correctas &
-En 10 archivos registrados en Git, deben coincidir la cantidad, el texto
-y la marca de añadido o borrado de cada línea.\\
+Probar 10 archivos registrados en Git, sin cambios preparados. Comparar
+el número, el texto y el tipo de las líneas cambiadas. Coinciden
+los 10 archivos.\\
 \hline
 
 R14 & GitHub Desktop debe mostrar los mismos commits que \texttt{git log}
@@ -456,12 +460,128 @@ de descartar cambios del README (R15).
   \label{fig:historial}
   \vspace{8pt}
 
-  \includegraphics[width=.83\linewidth,trim=0 141bp 0 0,clip]{figuras/r15-aviso-de-descarte.jpg}
+  \includegraphics[width=.83\linewidth,trim=0 141bp 0 137bp,clip]{figuras/r15-aviso-de-descarte.jpg}
   \caption{R15. Confirmación antes de descartar los cambios del README.}
   \label{fig:descarte}
 \end{figure}
 
 \section{Autoevaluación de los requisitos}
+
+La Tabla~\ref{tab:revision} revisa la versión anterior de los 15 requisitos
+según las nueve características de la norma y sus reglas de
+redacción~\cite[Sec. 5.2.5]{iso29148}, \cite[Sec. 5.2.7]{iso29148}.
+La Tabla~\ref{tab:correcciones} recoge los enunciados que se corrigieron
+en la Tabla~\ref{tab:requisitos}.
+
+La revisión se hizo sobre los enunciados y las pruebas propuestas.
+En R10, R11 y R12, la posibilidad de alcanzar los valores fijados
+queda pendiente de comprobar con las pruebas descritas.
+
+{\small
+\noindent N: necesario. Ap: apropiado. Am: no ambiguo. C: completo.
+S: singular. F: factible. V: verificable. Co: correcto. Fo: conforme.
+L: sin términos vagos según 5.2.7. \textbf{+} cumple en la revisión,
+\textbf{A} requiere ajuste y \textbf{P} queda pendiente de comprobar.\par}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{4pt}
+\begin{longtable}{@{}l*{10}{c}>{\raggedright\arraybackslash}p{7.5cm}@{}}
+\caption{Revisión de los 15 requisitos}\label{tab:revision}\\
+\hline
+\textbf{ID} & \textbf{N} & \textbf{Ap} & \textbf{Am} & \textbf{C} &
+\textbf{S} & \textbf{F} & \textbf{V} & \textbf{Co} & \textbf{Fo} &
+\textbf{L} & \textbf{Observación}\\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{N} & \textbf{Ap} & \textbf{Am} & \textbf{C} &
+\textbf{S} & \textbf{F} & \textbf{V} & \textbf{Co} & \textbf{Fo} &
+\textbf{L} & \textbf{Observación}\\
+\hline
+\endhead
+R01 & + & + & + & + & + & + & + & + & + & + & La rama activa fija la comparación.\\
+R02 & + & + & + & + & + & + & + & + & + & + & Se puede revisar el historial con tres commits.\\
+R03 & + & + & A & A & + & + & + & + & + & A & Faltaba aclarar cuándo el nombre está disponible.\\
+R04 & + & + & A & A & + & + & + & + & + & A & Faltaba nombrar la opción y dónde ver el guardado.\\
+R05 & + & + & + & + & + & + & + & + & + & + & Se puede revisar qué línea entró al commit.\\
+R06 & + & + & + & + & + & + & + & + & + & + & La barra muestra cuál rama queda activa.\\
+R07 & + & + & + & + & + & + & + & + & + & + & El editor permite comprobar qué carpeta se abrió.\\
+R08 & + & + & + & + & + & + & + & + & + & + & El ID del commit permite comprobar el envío.\\
+R09 & + & + & + & + & + & + & + & + & + & + & Se indica la versión y el tipo de Windows.\\
+R10 & + & + & A & A & + & P & A & + & + & A & Faltaba precisar el archivo de la prueba.\\
+R11 & + & + & + & + & + & P & + & + & + & + & Falta medir el tiempo en el equipo de prueba.\\
+R12 & + & + & A & A & + & P & A & + & + & A & El punto de partida de la medición no estaba claro.\\
+R13 & + & + & A & A & + & + & A & + & + & + & Faltaba aclarar qué archivos y cambios comparar.\\
+R14 & + & + & + & + & + & + & + & + & + & + & Los ID permiten comparar ambos historiales.\\
+R15 & + & + & + & + & + & + & + & + & + & + & El aviso se puede comprobar sin borrar el cambio.\\
+\hline
+\end{longtable}
+\endgroup
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTpre}{4pt}
+\setlength{\LTpost}{4pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{longtable}{@{}l
+  >{\raggedright\arraybackslash}p{7.65cm}
+  >{\raggedright\arraybackslash}p{7.8cm}@{}}
+\caption{Enunciados antes y después de la revisión}\label{tab:correcciones}\\
+\hline
+\textbf{ID} & \textbf{Versión anterior} & \textbf{Versión corregida}\\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Versión anterior} & \textbf{Versión corregida}\\
+\hline
+\endhead
+
+R03 & Si el usuario confirma un nombre válido y disponible y elige la rama
+activa como origen, GitHub Desktop debe crear la rama local desde el último
+commit de esa rama. & Al confirmar una rama local nueva desde la rama
+activa, con un nombre que Git acepte y que no exista entre las ramas
+locales, GitHub Desktop debe crearla desde el último commit de la rama
+activa.\\
+\hline
+
+R04 & Cuando el usuario guarde los cambios de un archivo con
+\textit{Stash}, GitHub Desktop debe mostrar una entrada con esos cambios en
+la misma rama. & Cuando el usuario use \textit{Stash All Changes}, GitHub
+Desktop debe mostrar el guardado en \textit{Stashed Changes} de la rama
+activa.\\
+\hline
+
+R10 & GitHub Desktop debe ofrecer un flujo de commit local en el que,
+en su primer uso, al menos cuatro de cinco estudiantes que ya saben
+crear un commit desde la terminal guarden el archivo preparado en un
+commit en tres minutos o menos y sin ayuda. &
+Con el README como único archivo modificado, GitHub Desktop debe
+ofrecer un flujo en el que al menos cuatro de cinco estudiantes que ya
+saben crear un commit desde la terminal completen su primer commit en
+la aplicación en tres minutos o menos y sin ayuda.\\
+\hline
+
+R12 & Durante la actualización de la vista de cambios con 200 archivos de
+texto modificados de 10~KiB cada uno, GitHub Desktop debe usar hasta
+250~MiB más de memoria privada que antes de actualizar. & Al actualizar la
+vista de cambios con 200 archivos de texto modificados de 10~KiB cada uno,
+GitHub Desktop debe usar hasta 250~MiB más de memoria privada que con la
+misma vista abierta y el repositorio sin cambios.\\
+\hline
+
+R13 & Con la opción de ignorar espacios desactivada, GitHub Desktop debe
+mostrar las mismas líneas añadidas y borradas que \texttt{git diff HEAD}
+para cada archivo de texto modificado. & Al seleccionar un archivo de texto
+modificado sin cambios preparados para el commit, GitHub Desktop debe
+mostrar las mismas líneas añadidas y borradas que \texttt{git diff HEAD}
+para ese archivo, con la opción de ignorar espacios desactivada.\\
+\hline
+\end{longtable}
+\endgroup
 
 \section{Reflexión}
 
