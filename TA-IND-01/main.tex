@@ -438,7 +438,6 @@ cambio en cada archivo.\\
 \end{longtable}
 \endgroup
 
-\newpage
 \subsection*{Capturas de GitHub Desktop}
 
 Las capturas se tomaron en un repositorio local de prueba. La
@@ -447,6 +446,7 @@ Figura~\ref{fig:cambios} muestra las líneas modificadas en la rama
 commits (R02) y la Figura~\ref{fig:descarte} muestra el aviso antes
 de descartar cambios del README (R15).
 
+\newpage
 \begin{figure}[!ht]
   \centering
   \setlength{\abovecaptionskip}{2pt}
@@ -585,7 +585,47 @@ para ese archivo, con la opción de ignorar espacios desactivada.\\
 
 \section{Reflexión}
 
+Los requisitos de calidad fueron los más difíciles de formular,
+especialmente el de uso de memoria (R12). La vista de cambios permite ver
+si el programa detectó los archivos modificados. Para saber cuánta
+memoria usó al hacerlo, hizo falta pensar en una prueba aparte.
+
+La primera versión comparaba el consumo con el valor de antes de
+actualizar la vista. Ese punto quedaba abierto a interpretación. Una
+persona podía medir apenas abría GitHub Desktop y otra después de cargar
+el repositorio. Las dos podían partir de valores distintos.
+
+La corrección dejó un punto de partida concreto. La vista de cambios
+debe estar abierta y el repositorio, sin cambios. Desde ahí se mide
+cuánta memoria adicional usa la aplicación al actualizar la vista
+después de modificar los 200 archivos de prueba.
+
+Medir la memoria de todo el equipo habría incluido programas abiertos
+como el navegador. Por eso se eligió la memoria privada de los procesos
+de GitHub Desktop. También se toma el valor más alto durante la
+actualización, porque el consumo puede bajar al terminar.
+
+También costó decidir cuánto aumento sería aceptable. Los 250~MiB se
+plantearon como una meta para el equipo de prueba. Para saber si esa
+meta es razonable, todavía hace falta repetir la medición en las mismas
+condiciones y comparar el mayor consumo con el valor inicial.
+
+Si una prueba supera el límite, el siguiente paso sería comprobar que
+se usaron los mismos archivos y el mismo equipo. Con esas condiciones
+claras, se puede decidir si el límite necesita revisarse.
+
+Esta revisión ayudó a entender que una cifra sirve cuando se explica
+cómo se obtiene. Dejar por escrito el punto de partida y qué se debe
+medir permite que otra persona repita la prueba y llegue a una decisión
+con el mismo criterio.
+
 \section{Uso de IA}
+
+Se utilizó ChatGPT para organizar los títulos de las secciones del informe
+y aclarar el significado de algunos términos de la norma que resultaban
+desconocidos. También se consultó cómo realizar la autoevaluación de los
+requisitos, en particular cómo revisar cada enunciado con los criterios
+de la norma y presentar las correcciones en una tabla.
 
 \renewcommand{\refname}{Referencias}
 \bibliographystyle{IEEEtran}
