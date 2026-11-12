@@ -7,6 +7,8 @@
 \usepackage{lastpage}
 \usepackage{titlesec}
 \usepackage{lmodern}
+\usepackage{array}
+\usepackage{longtable}
 \usepackage[hidelinks]{hyperref}
 
 \renewcommand{\familydefault}{\sfdefault}
@@ -252,6 +254,184 @@ aplicación~\cite[Sec. 5.2.8.2]{iso29148}, \cite[Sec. 5.2.8.3]{iso29148}.
 \end{enumerate}
 
 \section{Requisitos y clasificación}
+
+La Tabla~\ref{tab:requisitos} reúne 15 requisitos de GitHub Desktop en
+Windows. Cada enunciado indica qué debe hacer la aplicación, en qué
+condiciones y con qué límites cuando corresponde~\cite[Sec. 5.2.4,
+Fig. 1]{iso29148}.
+
+Los tipos distinguen el propósito de cada requisito~\cite[Sec.
+5.2.8.3]{iso29148}, \cite[Ch. 1, Sec. 1.4]{swebok},
+\cite[Ch. 1, Sec. 1.7]{swebok}.
+
+La columna ISO/IEC 25010 muestra la característica y subcaracterística
+de cada requisito de calidad del producto. El guion indica que esa
+clasificación no aplica.
+
+Los tiempos y límites de la tabla son metas para las pruebas. Las pruebas
+locales se plantean en un equipo con Windows 11 de 64 bits, SSD y 8~GB de
+RAM, con un repositorio de práctica.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\LTpost}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.85cm}
+  >{\raggedright\arraybackslash}p{5.45cm}
+  >{\raggedright\arraybackslash}p{1.60cm}
+  >{\raggedright\arraybackslash}p{2.55cm}
+  >{\raggedright\arraybackslash}p{1.85cm}
+  >{\raggedright\arraybackslash}p{3.55cm}
+  @{}}
+\caption{Clasificación de requisitos de GitHub Desktop}
+\label{tab:requisitos}\\
+\hline
+\textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} &
+\textbf{ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación}\\
+\hline
+\endfirsthead
+\multicolumn{6}{@{}l}{\textbf{Tabla \thetable.} Clasificación de requisitos
+(continuación)}\\
+\hline
+\textbf{ID} & \textbf{Enunciado} & \textbf{Tipo} &
+\textbf{ISO/IEC 25010} & \textbf{Métrica} & \textbf{Criterio de aceptación}\\
+\hline
+\endhead
+\endfoot
+\hline
+\endlastfoot
+
+R01 & Cuando el usuario seleccione un archivo de texto modificado,
+GitHub Desktop debe mostrar las líneas añadidas y borradas respecto
+del último commit de la rama activa. &
+Funcional & --- & Líneas visibles &
+Preparar dos ramas con versiones distintas del mismo archivo. En la
+rama activa, añadir una línea y borrar otra. La vista muestra solo esos
+dos cambios frente al último commit de esa rama.\\
+\hline
+
+R02 & Cuando el usuario abra el historial, GitHub Desktop debe listar
+los commits de la rama activa. &
+Funcional & --- & Commits visibles &
+En una rama de prueba con tres commits, el historial muestra los tres
+commits con sus mensajes.\\
+\hline
+
+R03 & Si el usuario confirma un nombre válido y disponible y elige la
+rama activa como origen, GitHub Desktop debe crear la rama local desde
+el último commit de esa rama. &
+Funcional & --- & ID del commit inicial &
+Al terminar, las dos ramas apuntan al mismo commit.\\
+\hline
+
+R04 & Cuando el usuario guarde los cambios de un archivo con
+\textit{Stash}, GitHub Desktop debe mostrar una entrada con esos
+cambios en la misma rama. &
+Funcional & --- & Entradas visibles &
+Al guardar un cambio del README, se puede abrir la entrada y ver el
+cambio.\\
+\hline
+
+R05 & Al crear un commit desde la vista de cambios, GitHub Desktop debe
+limitar las adiciones del commit a las líneas que el usuario marcó. &
+Funcional & --- & Líneas incluidas &
+Añadir dos líneas en bloques separados y desmarcar una. El commit
+incluye solo la línea que quedó marcada.\\
+\hline
+
+R06 & Cuando el usuario elija otra rama local en un repositorio sin
+cambios pendientes, GitHub Desktop debe activar la rama elegida. &
+Funcional & --- & Rama activa &
+Al pasar de \texttt{main} a \texttt{prueba}, la aplicación indica
+\texttt{prueba} como rama activa.\\
+\hline
+
+R07 & Cuando el usuario elija abrir el repositorio en el editor,
+GitHub Desktop debe pasar la ruta de la carpeta principal del
+repositorio al editor configurado. &
+Interfaz externa & --- & Carpeta abierta &
+Con Visual Studio Code como editor, se abre la carpeta principal del
+repositorio activo.\\
+\hline
+
+R08 & Cuando el usuario pulse \textit{Push origin} con conexión y
+permiso de escritura, GitHub Desktop debe enviar el commit pendiente a
+la rama de GitHub vinculada a la rama activa. &
+Interfaz externa & --- & ID del commit en GitHub &
+Tras enviar un commit, el último commit de la rama en GitHub tiene el
+mismo ID que el commit local.\\
+\hline
+
+R09 & GitHub Desktop debe abrir repositorios locales en los equipos de
+práctica con Windows 11 de 64 bits. &
+Restricción & --- & Apertura del repositorio &
+En el equipo de prueba, la vista de cambios carga el repositorio
+local elegido.\\
+\hline
+
+R10 & GitHub Desktop debe ofrecer un flujo de commit local en el que,
+en su primer uso, al menos cuatro de cinco estudiantes que ya saben
+crear un commit desde la terminal guarden el archivo preparado en un
+commit en tres minutos o menos y sin ayuda. &
+Calidad en uso & --- & Estudiantes que completan la tarea &
+Antes de la prueba, cada estudiante crea un commit desde la terminal.
+En GitHub Desktop, medir desde que se abre la vista de cambios hasta que
+aparece el commit en el historial. Cumplen al menos cuatro de cinco en
+tres minutos o menos y sin ayuda.\\
+\hline
+
+R11 & Cuando el usuario seleccione un archivo de texto de 1\,000 líneas
+con 20 líneas modificadas, GitHub Desktop debe mostrar sus diferencias
+en 2~s o menos. &
+Calidad &
+Eficiencia de desempeño / Comportamiento temporal~\cite[Sec. 3.2.1]{iso25010} &
+Tiempo de respuesta (s) &
+Medir desde el clic hasta que aparecen las diferencias. Cada uno de los
+10 intentos tarda como máximo 2~s.\\
+\hline
+
+R12 & Durante la actualización de la vista de cambios con 200 archivos
+de texto modificados de 10~KiB cada uno, GitHub Desktop debe usar hasta
+250~MiB más de memoria privada que antes de actualizar. &
+Calidad &
+Eficiencia de desempeño / Utilización de recursos~\cite[Sec. 3.2.2]{iso25010} &
+Aumento máximo de memoria (MiB) &
+Sumar la memoria privada de los procesos de la aplicación. En tres
+pruebas, restar al máximo el valor inicial. La diferencia es de
+250~MiB o menos en cada prueba.\\
+\hline
+
+R13 & Con la opción de ignorar espacios desactivada, GitHub Desktop
+debe mostrar las mismas líneas añadidas y borradas que
+\texttt{git diff HEAD} para cada archivo de texto modificado. &
+Calidad &
+Adecuación funcional / Corrección funcional~\cite[Sec. 3.1.2]{iso25010} &
+Archivos con diferencias correctas &
+En 10 archivos registrados en Git, deben coincidir la cantidad, el texto
+y la marca de añadido o borrado de cada línea.\\
+\hline
+
+R14 & GitHub Desktop debe mostrar los mismos commits que \texttt{git log}
+al consultar la misma rama activa del mismo repositorio local. &
+Calidad &
+Compatibilidad / Interoperabilidad~\cite[Sec. 3.3.2]{iso25010} &
+Commits visibles en ambas herramientas &
+Crear dos commits con cada herramienta. Los cuatro aparecen con los
+mismos ID en ambos historiales.\\
+\hline
+
+R15 & Si el aviso de descarte está activado, GitHub Desktop debe pedir
+confirmación antes de borrar los cambios de un archivo. &
+Calidad &
+Capacidad de interacción / Protección frente a errores del usuario%
+~\cite[Sec. 3.4.4]{iso25010} &
+Descartes detenidos al cancelar &
+En los cinco intentos aparece el aviso. Al cancelar, se conserva el
+cambio en cada archivo.\\
+\end{longtable}
+\endgroup
 
 \section{Autoevaluación de los requisitos}
 
